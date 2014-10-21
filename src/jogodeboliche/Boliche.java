@@ -7,6 +7,8 @@ public class Boliche {
      int score = 0;
      int pinos;
 
+
+
     public int score() {
         return score;
     }
