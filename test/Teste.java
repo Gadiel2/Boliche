@@ -45,8 +45,32 @@ public class Teste {
         Boliche jogo = new Boliche();
         jogo.roll(5);
         jogo.roll(5);
-        jogo.roll(3);
-        assertEquals(16,jogo.score());
+        jogo.roll(5);
+        assertEquals(20,jogo.score());
+    }
+    @Test
+    public void teste3(){
+        Boliche jogo = new Boliche();
+       /*1*/ jogo.roll(10);
+       /*3*/ jogo.roll(4);
+       /*4*/ jogo.roll(4);
+       /*5*/ jogo.roll(4);
+       /*6*/ jogo.roll(4);
+       /*7*/ jogo.roll(4);
+       /*8*/ jogo.roll(4);
+       /*9*/ jogo.roll(4);
+       /*10*/jogo.roll(4);
+       /*11*/jogo.roll(4);
+       /*12*/jogo.roll(4);
+       /*13*/jogo.roll(4);
+       /*14*/jogo.roll(4);
+       /*15*/jogo.roll(4);
+       /*16*/jogo.roll(4);
+       /*17*/jogo.roll(4);
+       /*18*/jogo.roll(4);
+       /*19*/jogo.roll(10);
+       /*20*/jogo.roll(4);
+        assertEquals(90,jogo.score());
     }
         
         
