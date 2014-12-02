@@ -15,6 +15,9 @@ public class Boliche {
      
      int STRIKE = 0;
 
+     public Boliche(){
+         
+     }
     public int score() {
         return score;
     }
@@ -54,6 +57,5 @@ public class Boliche {
         }
       
     }
-    
     
 }

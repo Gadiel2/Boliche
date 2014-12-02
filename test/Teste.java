@@ -68,7 +68,7 @@ public class Teste {
        /*16*/jogo.roll(4);
        /*17*/jogo.roll(4);
        /*18*/jogo.roll(4);
-       /*19*/jogo.roll(10);
+       /*19*/jogo.roll(4);
        /*20*/jogo.roll(4);
         assertEquals(90,jogo.score());
     }
