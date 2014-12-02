@@ -13,47 +13,73 @@ public class Boliche {
      
      int ultimoSpare = 0;
      
+     int bonus = 0;
+     
      int STRIKE = 0;
+     
+     int ultimoStrike = 0;
 
+     public Boliche(){
+
+     }
     public int score() {
         return score;
     }
 
     public void roll(int pinos) {
-        if(pinos >0 && pinos <11){
-            if(pinos==10){
-                STRIKE = 2;
-                jogadas[p] = 10;
-                jogadas[p+1] = 0;
-                p+=2;
+        if(pinos > 0 && pinos < 11){
+            if(pinos==10){ //Se for um strike
+                STRIKE = 2; 
+                jogadas[p] = 10; // 10 pontos da jogada atual
+                jogadas[p+1] = 0; // pula a próxima rodada
+                p+=2; // indice
+                ultimoStrike = p;
                 
             }
-            else{
-                if(STRIKE !=0){
-                          STRIKE --;
+            else if(pinos != 10){ 
+                if(STRIKE !=0){ 
+                          STRIKE --; 
                           this.score += pinos;
+                          
                 }
-                if(p%2==0){
-                    int soma =0;
-                    for (int i = ultimoSpare;i < p; i++) {
-                        soma += jogadas[i];
-                    }
+               if(p%2==0){ // um rodada completa
+                    int soma = 0; 
+                    System.out.println(ultimoStrike + " ultimoStrike");
+                    System.out.println(p+ " P");
+                    for (int i = ultimoStrike;i < p; i++) { 
+                        soma += jogadas[i];  
+                    } 
                     if(soma == 10){
-                        this.ultimoSpare = p;
-                        this.score += pinos;
+                        if( (p - ultimoStrike) ==2){
+                            STRIKE++;
+                            System.out.println( STRIKE + " STRIKE");
+                        }
+                        this.ultimoSpare = p; 
+                        this.score += pinos; 
                     }
-                }
-                jogadas[p] = pinos;
-            
+                    else{
+                        if( (p - ultimoStrike) ==2){
+                            STRIKE++;
+                            System.out.println( STRIKE + " STRIKE do else");
+                        }
+                        this.score += pinos; 
+               }
             }
+                System.out.println(ultimoSpare + " ultimoSpare");
+                if( (p-1)== ultimoSpare ){
+                    
+                }
+            jogadas[p] = pinos;
             this.score += pinos;
+            System.out.println(this.score + " Score");
             p++;
         }
-        else{
-           throw new IllegalArgumentException();
+        else if(pinos < 0 & pinos > 11){
+            System.out.println("ERRO!!!");;
         }
       
     }
     
     
+    }
 }
