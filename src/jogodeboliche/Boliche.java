@@ -20,7 +20,6 @@ public class Boliche {
      int ultimoStrike = 0;
 
      public Boliche(){
-
      }
     public int score() {
         return score;
