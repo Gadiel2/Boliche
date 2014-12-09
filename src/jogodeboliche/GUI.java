@@ -1,76 +1,61 @@
 
 package jogodeboliche;
 
-import java.util.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
-public class GUI extends JFrame {
-    
+
+public class GUI extends JFrame{
+    ImageIcon imagemInicial = new javax.swing.ImageIcon(getClass().getResource("/icones/pinos.jpg"));
+    Image imagemAux;
     Container cp = new Container();
+    JPanel tela = new JPanel();
+    JPanel tela1 = new JPanel();
+    JPanel tela2 = new JPanel();
+    JLabel rotulo = new JLabel(imagemInicial);
+    JLabel titulo = new JLabel();
+    JLabel nPlayers = new JLabel("Numero de Jogadores: ");
+    JTextField camponPlayers = new JTextField();
+    JButton botao = new JButton("Começar");
     
-    Random random = new Random();
-    
-    JPanel PnIn = new JPanel();
-    JPanel PnPt = new JPanel();
-    JPanel PnBt = new JPanel();
-    
-    JTextField tfJogadores = new JTextField(15);
-    
-    JLabel lb1 = new JLabel("0");
-    
-    JButton btComecar = new JButton("Começar");
-    JButton btJogar = new JButton("Jogar");
-    
-
     public GUI(){
-        
-        cp = getContentPane();
-        
-        setTitle("Jogo de Boliche");
-        setSize(800,200);
+        imagemAux = imagemInicial.getImage();
+        imagemInicial.setImage(imagemAux.getScaledInstance(450,400, Image.SCALE_SMOOTH));
+        setSize(500,500);
+        setTitle("Boliche");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        
+        cp = getContentPane();
         cp.setLayout(new BorderLayout());
-        
-        PnIn.setLayout(new FlowLayout(FlowLayout.LEFT));
-        
-        PnIn.add(new JLabel("Numero de Jogadores:"));
-        PnIn.add(tfJogadores);
-        PnIn.add(btComecar);
-        
-        PnPt.setLayout(new FlowLayout(FlowLayout.LEFT));
-        
-        PnPt.add(new JLabel("Pontuação:"));
-        PnPt.add(lb1);
+        tela.setLayout(new GridLayout(1,2));
+        tela.add(nPlayers);
+        tela.add(camponPlayers);
+        tela1.add(botao);
+        tela2.setLayout(new GridLayout(2,1));
+        tela2.add(tela);
+        tela2.add(tela1);
+        cp.add(rotulo, BorderLayout.CENTER);
+        cp.add(tela2, BorderLayout.SOUTH);
         
         
-        PnBt.setLayout(new FlowLayout(FlowLayout.CENTER));
-        
-        PnBt.add(btJogar);
-        
-        cp.add(PnIn, BorderLayout.NORTH);
-        cp.add(PnPt, BorderLayout.CENTER);
-        cp.add(PnBt, BorderLayout.SOUTH);
-        
-        Boliche teste1 = new Boliche();
-         btJogar.addActionListener(new ActionListener() {
+        botao.addActionListener(new ActionListener() {
+
             @Override
-            public void actionPerformed(ActionEvent a) {
-                
-                int pinos = random.nextInt(11);
-                
-                lb1.setText(String.valueOf(pinos));
-                
-                
-                  }
+            public void actionPerformed(ActionEvent e) {
+                new GUIJogo(camponPlayers.getText());
+                dispose();
+            }
         });
-         
-       setVisible(true);  
+                
+        setVisible(true);
     }
 }
-
-
