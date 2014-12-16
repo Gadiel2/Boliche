@@ -43,7 +43,7 @@ public class Boliche {
                             
                     }                   
         }
-        else{
+        else{  // TODO: Evite o uso de System.out.
             System.out.println("FIM DE JOGO");
         }
         return soma;
@@ -62,11 +62,9 @@ public class Boliche {
                 p++;
             }
         }
-        else if(pinos < 0 & pinos > 11){
-            System.out.println("ERRO!!!");;
+        else if(pinos < 0 & pinos > 11){     // TODO: retire o "if (pinos...)" (só o else basta nesse caso)
+            System.out.println("ERRO!!!");;  // TODO: ao invés de escrever na tela, lance uma exceção:
+                                             //       throw new IllegalArgumentException("Quantidade inválida de pinos");
         }
-      
-    } 
-    
     }
-
+}
